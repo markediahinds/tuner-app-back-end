@@ -1,6 +1,6 @@
 const db = require('../db/dbConfig.js')
 
-const getAllSongss = async () => {
+const getAllSongs = async () => {
     try {
         const allSongs = await db.any("SELECT * FROM tuners")
         return allSongs
@@ -10,7 +10,24 @@ const getAllSongss = async () => {
 }
 
 const getSong = async (id) => {
-    
+    try {
+        const oneColor = await db.one("SELECT * FROM songs WHERE id=$1", id)
+        return oneColor
+    } catch (error) {
+        return error
+    }
 }
 
-module.exports = { getAllSongs, getSong }
+const createSong = async (song) => {
+    try {
+        const newSong = await db.one(
+            "INSERT INTO songs (song, artist, album, time, is_alive) VALUES ($1, $2, $3, $4, $5) RETURNING *", 
+            [song.song, song.artist, song.album, song.time, song.is_alive]
+        )
+        return newColor
+    } catch (error) {
+        throw error
+    }
+}
+
+module.exports = { getAllSongs, getSong, createSong }
