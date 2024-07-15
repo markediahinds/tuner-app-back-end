@@ -1,4 +1,4 @@
-\c songs_dev
+\c songs_dev;
 
 INSERT INTO songs (song, artist, album, time, is_alive) VALUES
 ('Forever', 'Tems', 'Born In The Wild', '3:16', true),
@@ -9,7 +9,12 @@ INSERT INTO songs (song, artist, album, time, is_alive) VALUES
 ('Everyday', 'Fireboy DML', 'Everyday', '2:46', true),
 ('Wickedest', 'Tems', 'Born In The Wild', '2:37', true),
 ('Tshwala Bam', 'Tshwala Bam feat. SNE (Remix)', null, '3:33', true),
-('ABC Song', "Gracie's Corner", "Gracie's Corner Kids Hits, Vol. 2", '4:16', true)
+('The Whole Towns Laughing At Me', 'Teddy Pendergrass', 'Teddy Pendergrass', '4:27', false),
+('You in My Face', 'Tems', 'Born in the Wild', '2:42', true),
+('I Wanna Dance with Somebody(Who Loves Me)', 'Whitney Houston', 'Whitney', '4:51', false),
+('Dangerously In Love', 'Beyoncé', 'Beyoncé', '4:53', true);
+
+
 
 
 
