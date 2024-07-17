@@ -39,4 +39,4 @@ const checkTime = (req, res, next) => {
 }
 
 
-module.exports = { checkSong, checkBoolean, checkArtis, checkAlbum, checkTime }
+module.exports = { checkSong, checkBoolean, checkArtist, checkAlbum, checkTime }
