@@ -10,8 +10,8 @@ app.get('/', (req, res) => {
     res.send(`Ola, tune into these Tunes`)
 })
 
-const songsController = require('./controllers/songsController.js')
-app.use('/songs', songsController)
+// const songsController = require('./controllers/songsController.js')
+// app.use('/songs', songsController)
 
 app.get('*', (req, res) => {
     res.status(404).send(`Page not found`)
