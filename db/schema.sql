@@ -9,12 +9,12 @@ CREATE TABLE songartists (
     albums SMALLINT,
     roots TEXT,
     sun_sign VARCHAR(11),
-    net_worth CURRENCY UNSIGNED, 
+    net_worth INT, 
     on_tour BOOLEAN,
     is_alive BOOLEAN,
     has_children BOOLEAN,
-    official_website HYPERLINK VARCHAR(200),
-    social_media HYPERLINK,
+    official_website TEXT,
+    social_media TEXT
 );
 
 DROP TABLE IF EXISTS songs;

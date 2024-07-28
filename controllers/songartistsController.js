@@ -1,6 +1,8 @@
 const express = require('express')
 const songartists = express.Router()
-const { getAllSongArtists, getSongArtist, deleteSongArtist, createSongArtist, updateSongArtist } = require('../queries/songartists')
+const songsController = require('./songsController.js')
+songartists.use('/:songartist_id/songs', songsController)
+const { getAllSongArtists, getSongArtist, deleteSongArtist, updateSongArtist, createSongArtist } = require('../queries/songartists')
 const { checkArtist, checkAlbums, checkRoots, checkSunSign, checkNetWorth, checkOnTour, checkIsAlive, checkHasChildren, checkOfficialWebsite, checkSocialMedia } = require('../validations/checkSongartists')
 
 
@@ -34,6 +36,27 @@ songartists.delete('/:id', async (req, res) => {
     }
 })
 
+songartists.put('/:id', 
+    checkArtist, 
+    checkAlbums, 
+    checkRoots,
+    checkSunSign,
+    checkNetWorth,
+    checkOnTour,
+    checkIsAlive,
+    checkHasChildren,
+    checkOfficialWebsite,
+    checkSocialMedia,
+    async (req, res) => {
+    const { id } = req.params
+    const updatedSongArtist = await updateSongArtist(id, req.body)
+    if(updatedSongArtist.id) {
+        res.status(200).json(updatedSongArtist)
+    } else {
+        res.status(404).json({ error: 'Song Not Found' })
+    }
+})
+
 songartists.post('/', 
     checkArtist, 
     checkAlbums, 
@@ -47,27 +70,6 @@ songartists.post('/',
     checkSocialMedia, async (req, res) => {
     const newSongArtist = await createSongArtist(req.body)
     res.json(newSongArtist)
-})
-
-songartists.put('/:id', 
-    checkArtist, 
-    checkAlbums, 
-    checkRoots,
-    checkSunSign,
-    checkNetWorth,
-    checkOnTour,
-    checkIsAlive,
-    checkHasChildren,
-    checkOfficialWebsite,
-    checkSocialMedia
-    async (req, res) => {
-    const { id } = req.params
-    const updatedSongArtist = await updateSongArtist(id, req.body)
-    if(updatedSongArtist.id) {
-        res.status(200).json(updatedSongArtist)
-    } else {
-        res.status(404).json({ error: 'Song Not Found' })
-    }
 })
 
 

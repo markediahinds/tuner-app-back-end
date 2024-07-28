@@ -30,7 +30,7 @@ const checkTime = (req, res, next) => {
     }
 }
 
-const checkBoolean = (req, res, next) => {
+const checkIsAlive = (req, res, next) => {
     if(req.body.is_alive) {
         return next()
     } else {
@@ -44,5 +44,5 @@ module.exports = {
     checkArtist, 
     checkAlbum, 
     checkTime,
-    checkBoolean 
+    checkIsAlive
 }
