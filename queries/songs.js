@@ -11,7 +11,7 @@ const getAllSongs = async (songartist_id) => {
 
 const getSong = async (id) => {
     try {
-        const oneSong = await db.one("SELECT * FROM songs WHERE id=$1, id", id)
+        const oneSong = await db.one("SELECT * FROM songs WHERE id=$1", id)
         return oneSong
     } catch (err) {
         return (err)
@@ -49,7 +49,7 @@ const updateSong = async (song) => {
 
 const newSong = async (song) => {
     try {
-        const newSong = await db.one("INSERT INTO songs () VALUES() RETURNING *",
+        const newSong = await db.one("INSERT INTO songs (song, artist, album, time, is_popular, is_favorite, songartist_id) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
             [
               song.song,
               song.artist,

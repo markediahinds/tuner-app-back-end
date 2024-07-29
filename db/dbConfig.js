@@ -10,4 +10,5 @@ const cn = {
 
 const db = pgp(cn)
 
+
 module.exports = db // a connection to postgress, specifically to the db

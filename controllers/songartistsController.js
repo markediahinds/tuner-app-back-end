@@ -1,10 +1,9 @@
 const express = require('express')
 const songartists = express.Router()
 const songsController = require('./songsController.js')
-songartists.use('/:songartist_id/songs', songsController)
 const { getAllSongArtists, getSongArtist, deleteSongArtist, updateSongArtist, createSongArtist } = require('../queries/songartists')
 const { checkArtist, checkAlbums, checkRoots, checkSunSign, checkNetWorth, checkOnTour, checkIsAlive, checkHasChildren, checkOfficialWebsite, checkSocialMedia } = require('../validations/checkSongartists')
-
+songartists.use('/:songartist_id/songs', songsController)
 
 
 songartists.get('/', async (req, res) => {
